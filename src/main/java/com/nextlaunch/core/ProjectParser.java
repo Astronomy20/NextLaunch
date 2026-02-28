@@ -70,12 +70,6 @@ public class ProjectParser {
         }
         return value;
     }
-
-
-    /* ============================
-       Exception Class
-       ============================ */
-
     public static class InvalidProjectException extends Exception {
         public InvalidProjectException(String message) {
             super(message);
