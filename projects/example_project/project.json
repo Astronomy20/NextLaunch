@@ -1,8 +1,7 @@
 {
-  "id": "example-id",
-  "name": "Example Project",
+  "name": "My Project",
   "version": "1.0.0",
-  "description": "Example Project",
   "author": "YourName",
-  "entryPoint": "example_project.exe"
+  "description": "Short description here.",
+  "entry": "myproject.exe"
 }

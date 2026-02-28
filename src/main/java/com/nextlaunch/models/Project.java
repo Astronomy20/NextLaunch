@@ -41,11 +41,6 @@ public final class Project {
         validateStructure();
     }
 
-
-    /* ============================
-       Getters
-       ============================ */
-
     public String getId() {
         return id;
     }
@@ -79,13 +74,9 @@ public final class Project {
     }
 
     public boolean isExecutablePresent() {
-        return Files.exists(getEntryPath());
+        return !Files.exists(getEntryPath());
     }
 
-
-    /* ============================
-       Validation
-       ============================ */
 
     private String validateId(String id) {
         if (id == null || id.isBlank()) {
@@ -108,7 +99,7 @@ public final class Project {
             throw new IllegalArgumentException("Project directory does not exist: " + projectDirectory);
         }
 
-        if (!isExecutablePresent()) {
+        if (isExecutablePresent()) {
             throw new IllegalArgumentException(
                     "Entry file not found: " + getEntryPath()
             );
@@ -122,10 +113,6 @@ public final class Project {
         return value.trim();
     }
 
-
-    /* ============================
-       Equality (by ID only)
-       ============================ */
 
     @Override
     public boolean equals(Object o) {
