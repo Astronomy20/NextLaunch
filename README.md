@@ -32,7 +32,7 @@ Each project should follow this structure:
 ```bash
 ProjectName/
  ├── project.json
- ├── executable file (exe / jar / script)
+ ├── executable file
  └── other resources
 ```
 
