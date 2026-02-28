@@ -39,11 +39,12 @@ ProjectName/
 ### Example `project.json`
 ```bash
 {
+  "id": "myproject-id"
   "name": "My Project",
   "version": "1.0.0",
   "author": "YourName",
   "description": "Short description here.",
-  "entry": "run.bat"
+  "entryPoint": "myproject.exe"
 }
 ```
 
