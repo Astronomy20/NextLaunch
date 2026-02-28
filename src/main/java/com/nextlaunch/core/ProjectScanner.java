@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class ProjectScanner {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProjectScanner.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProjectScanner.class);
 
     private final ProjectParser parser;
 
@@ -33,15 +33,15 @@ public class ProjectScanner {
         if (!Files.exists(projectsRoot)) {
             try {
                 Files.createDirectories(projectsRoot);
-                logger.info("Created projects directory at {}", projectsRoot);
+                LOGGER.info("Created projects directory at {}", projectsRoot);
             } catch (IOException e) {
-                logger.error("Failed to create projects directory: {}", projectsRoot, e);
+                LOGGER.error("Failed to create projects directory: {}", projectsRoot, e);
                 return Collections.emptyList();
             }
         }
 
         if (!Files.isDirectory(projectsRoot)) {
-            logger.error("Projects root path is not a directory: {}", projectsRoot);
+            LOGGER.error("Projects root path is not a directory: {}", projectsRoot);
             return Collections.emptyList();
         }
 
@@ -53,19 +53,19 @@ public class ProjectScanner {
                     try {
                         Project project = parser.parseProject(folder);
                         if (projectMap.containsKey(project.getId())) {
-                            logger.warn("Duplicate project ID '{}' found in folder {}. Skipping.",
+                            LOGGER.warn("Duplicate project ID '{}' found in folder {}. Skipping.",
                                     project.getId(), folder);
                         } else {
                             projectMap.put(project.getId(), project);
-                            logger.info("Loaded project '{}' from {}", project.getName(), folder);
+                            LOGGER.info("Loaded project '{}' from {}", project.getName(), folder);
                         }
                     } catch (ProjectParser.InvalidProjectException e) {
-                        logger.warn("Skipping invalid project in folder {}: {}", folder, e.getMessage());
+                        LOGGER.warn("Skipping invalid project in folder {}: {}", folder, e.getMessage());
                     }
                 }
             }
         } catch (IOException e) {
-            logger.error("Error reading projects directory {}", projectsRoot, e);
+            LOGGER.error("Error reading projects directory {}", projectsRoot, e);
         }
 
         return new ArrayList<>(projectMap.values());
