@@ -1,17 +1,51 @@
 package com.nextlaunch;
 
-import com.nextlaunch.core.ProjectManager;
+import com.nextlaunch.manager.ProjectManager;
 import com.nextlaunch.models.Project;
+import com.nextlaunch.ui.MainView;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
-public class NextLaunch {
+public class NextLaunch extends Application {
 
     private static final Path PROJECTS_ROOT = Path.of("projects");
 
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
+        for (String arg : args) {
+            if ("--terminal".equalsIgnoreCase(arg)) {
+                    runTerminal();
+                return;
+            }
+        }
+
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) {
+
+        MainView mainView = new MainView();
+
+        Scene scene = new Scene(mainView.getRoot(), 1000, 650);
+        scene.getStylesheets().add(
+                Objects.requireNonNull(getClass().getResource("/styles/light_mode.css")).toExternalForm()
+        );
+
+        stage.setTitle("NextLaunch");
+        stage.setMinWidth(900);
+        stage.setMinHeight(600);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    private static void runTerminal() {
 
         ProjectManager manager = new ProjectManager(PROJECTS_ROOT);
         manager.loadProjects();
@@ -26,6 +60,7 @@ public class NextLaunch {
                     1. List projects
                     2. Run project
                     3. Refresh projects
+                    4. Launch GUI
                     0. Exit
                     """);
 
@@ -44,6 +79,13 @@ public class NextLaunch {
                 case "3" -> {
                     manager.loadProjects();
                     System.out.println("Projects refreshed.");
+                }
+
+                case "4" -> {
+                    System.out.println("Launching GUI...");
+                    new Thread(() -> Application.launch(NextLaunch.class))
+                            .start();
+                    return;
                 }
 
                 case "0" -> {
@@ -71,6 +113,7 @@ public class NextLaunch {
     }
 
     private static void runProject(ProjectManager manager, String id) {
+
         if (!manager.containsProject(id)) {
             System.out.println("Project not found.");
             return;
