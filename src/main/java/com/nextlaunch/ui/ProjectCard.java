@@ -32,6 +32,9 @@ public class ProjectCard extends VBox {
         Label idLabel = new Label("ID: " + project.getId());
         idLabel.getStyleClass().add("project-id");
 
+        Label versionLabel = new Label("Version: " + project.getVersion());
+        versionLabel.getStyleClass().add("project-version");
+
         Button launchButton = new Button("Launch");
         launchButton.getStyleClass().add("launch-button");
 
@@ -39,6 +42,6 @@ public class ProjectCard extends VBox {
                 manager.runProject(project.getId())
         );
 
-        getChildren().addAll(nameLabel, idLabel, launchButton);
+        getChildren().addAll(nameLabel, idLabel, versionLabel, launchButton);
     }
 }
