@@ -51,6 +51,11 @@
     -fx-font-size: 12px;
 }
 
+.project-version {
+    -fx-text-fill: #555555;
+    -fx-font-size: 12px;
+}
+
 .launch-button {
     -fx-background-color: #3b82f6;
     -fx-text-fill: white;
