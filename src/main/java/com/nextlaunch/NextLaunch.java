@@ -30,17 +30,12 @@ public class NextLaunch extends Application {
 
     @Override
     public void start(Stage stage) {
-
         MainView mainView = new MainView();
+        Scene scene = new Scene(mainView.getRoot(), 800, 600);
 
-        Scene scene = new Scene(mainView.getRoot(), 1000, 650);
-        scene.getStylesheets().add(
-                Objects.requireNonNull(getClass().getResource("/styles/light_mode.css")).toExternalForm()
-        );
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/light_mode.css")).toExternalForm());
 
         stage.setTitle("NextLaunch");
-        stage.setMinWidth(900);
-        stage.setMinHeight(600);
         stage.setScene(scene);
         stage.show();
     }
