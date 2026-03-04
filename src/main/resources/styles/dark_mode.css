@@ -1,3 +1,4 @@
+/* Dark Mode */
 .root-pane {
     -fx-background-color: #08090f;
 }
@@ -46,12 +47,7 @@
     -fx-font-weight: bold;
 }
 
-.project-id {
-    -fx-text-fill: #9aa4b2;
-    -fx-font-size: 12px;
-}
-
-.project-version {
+.project-id, .project-version {
     -fx-text-fill: #9aa4b2;
     -fx-font-size: 12px;
 }
