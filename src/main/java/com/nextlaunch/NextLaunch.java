@@ -1,8 +1,8 @@
 package com.nextlaunch;
 
-import com.nextlaunch.manager.ProjectManager;
+import com.nextlaunch.models.ProjectManager;
 import com.nextlaunch.models.Project;
-import com.nextlaunch.ui.MainView;
+import com.nextlaunch.ui.views.MainView;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

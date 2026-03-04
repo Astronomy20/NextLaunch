@@ -1,9 +1,8 @@
-package com.nextlaunch.manager;
+package com.nextlaunch.models;
 
 import com.nextlaunch.core.ProjectParser;
 import com.nextlaunch.core.ProjectRunner;
 import com.nextlaunch.core.ProjectScanner;
-import com.nextlaunch.models.Project;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

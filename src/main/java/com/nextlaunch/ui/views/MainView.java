@@ -1,6 +1,6 @@
-package com.nextlaunch.ui;
+package com.nextlaunch.ui.views;
 
-import com.nextlaunch.manager.ProjectManager;
+import com.nextlaunch.models.ProjectManager;
 import com.nextlaunch.models.Project;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
